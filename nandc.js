@@ -1,6 +1,8 @@
-//Constant for RPS Values
+//Constant for RPS Values, and total scores
 const vals = [['Rock',1],['Paper',2],['Scissors',3]];
 const select_vals = ['rock','paper', 'scissors', 'exit'];
+var cpuScore = 0;
+var playerScore = 0;
 
 //CPU picker function
 function CPU_Pick(){
@@ -47,16 +49,25 @@ function gameRound(cpu,player){
         console.log('Player selected: ' + playerChoice);
         console.log('CPU selected: ' + cpuChoice);
         console.log('--CPU wins the round--')
+        cpuScore += 1
     }
     else{
         console.log('Player selected: ' + playerChoice);
         console.log('CPU selected: ' + cpuChoice);
         console.log('--Player wins the round--')
+        playerScore += 1
     }
+}
+
+function reset(){
+    playerScore = 0
+    cpuScore = 0
+    console.log('Scores reset to 0-0')
 }
 
 function play(){
     let cpu = CPU_Pick();
     let player = player_Pick();
     gameRound(cpu,player);
+    console.log('Score is Player: ' + String(playerScore) + ', CPU: ' + String(cpuScore))
 }
