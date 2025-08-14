@@ -1,7 +1,14 @@
 body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: black;
     color: antiquewhite;
-    text-align: center;
+    text-align: left;
+    margin-left: 20%;
+    font-weight: lighter;
     font-size: larger;
+}
+
+span{
+    color: green;
     font-weight: bolder;
 }

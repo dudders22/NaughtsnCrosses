@@ -55,7 +55,7 @@ function gameRound(cpu,player){
     }
 }
 
-function main(){
+function play(){
     let cpu = CPU_Pick();
     let player = player_Pick();
     gameRound(cpu,player);
