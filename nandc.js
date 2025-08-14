@@ -29,9 +29,34 @@ function player_Pick(){
     //Convert to relevant array value.
     let idx = select_vals.indexOf(p);
     console.log('test - Player value' + JSON.stringify(vals[idx]));
-    return idx
-
+    return vals[idx];
 }
 
-CPU_Pick()
-player_Pick()
+function gameRound(cpu,player){
+    let cpuChoice = cpu[0];
+    let playerChoice = player[0];
+    let cpuNum = cpu[1];
+    let playerNum = player[1];
+    //Decide winner
+    if(cpuNum == playerNum){
+        console.log('Player selected: ' + playerChoice);
+        console.log('CPU selected: ' + cpuChoice);
+        console.log('--Round Draw--')
+    }
+    else if(cpuNum > (playerNum % 3)){
+        console.log('Player selected: ' + playerChoice);
+        console.log('CPU selected: ' + cpuChoice);
+        console.log('--CPU wins the round--')
+    }
+    else{
+        console.log('Player selected: ' + playerChoice);
+        console.log('CPU selected: ' + cpuChoice);
+        console.log('--Player wins the round--')
+    }
+}
+
+function main(){
+    let cpu = CPU_Pick();
+    let player = player_Pick();
+    gameRound(cpu,player);
+}
