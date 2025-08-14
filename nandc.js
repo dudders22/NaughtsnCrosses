@@ -39,13 +39,17 @@ function gameRound(cpu,player){
     let playerChoice = player[0];
     let cpuNum = cpu[1];
     let playerNum = player[1];
+    //Possibly a dumb way to do this...
+    if (cpuNum == 1){ playerNum = playerNum % 3};
+    if (playerNum == 1){cpuNum = cpuNum % 3};
+
     //Decide winner
     if(cpuNum == playerNum){
         console.log('Player selected: ' + playerChoice);
         console.log('CPU selected: ' + cpuChoice);
         console.log('--Round Draw--')
     }
-    else if(cpuNum > (playerNum % 3)){
+    else if(cpuNum > playerNum){
         console.log('Player selected: ' + playerChoice);
         console.log('CPU selected: ' + cpuChoice);
         console.log('--CPU wins the round--')
