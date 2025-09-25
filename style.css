@@ -3,7 +3,6 @@ body{
     background-color: black;
     color: antiquewhite;
     text-align: left;
-    margin-left: 20%;
     font-weight: lighter;
     font-size: larger;
 }
@@ -11,4 +10,20 @@ body{
 span{
     color: green;
     font-weight: bolder;
+}
+
+.text_container{
+    margin-left: 20%;
+}
+
+.btn_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    margin: 0 25px;
+    height: 50px;
+    width: 175px;
 }
