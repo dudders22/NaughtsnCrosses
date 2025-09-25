@@ -4,34 +4,21 @@ const select_vals = ['rock','paper', 'scissors', 'exit'];
 var cpuScore = 0;
 var playerScore = 0;
 
+//Add the Text for the Results
+let playerScoreDisplay = document.querySelector('#playerScore');
+let cpuScoreDisplay = document.querySelector('#cpuScore');
+playerScoreDisplay.textContent = '0';
+cpuScoreDisplay.textContent = '0';
+
+//Add Event Listners
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => addEventListener('click',play));
+
 //CPU picker function
 function CPU_Pick(){
     const r = Math.floor(Math.random() * 3);
     console.log('test - CPU value' + JSON.stringify(vals[r]));
     return vals[r];
-}
-
-//Player option select function
-function player_Pick(){
-    let pass = 0;
-    let p = '';
-    while(pass === 0){
-        p = prompt('Pick rock, paper or scissors! (or type "exit" to exit)');
-        p = p.toLowerCase();
-        //Make sure we only accept valid strings.
-        if (select_vals.includes(p)){
-            console.log('Player selected: ' + p);
-            pass = 1;
-        }
-        else{
-            console.log('invalid option, please select only rock, paper or scissors! (or exit)');
-        }
-    }
-    
-    //Convert to relevant array value.
-    let idx = select_vals.indexOf(p);
-    console.log('test - Player value' + JSON.stringify(vals[idx]));
-    return vals[idx];
 }
 
 function gameRound(cpu,player){
@@ -69,9 +56,15 @@ function reset(){
     console.log('Scores reset to 0-0')
 }
 
-function play(){
+function play(e){
     let cpu = CPU_Pick();
-    let player = player_Pick();
+    let player_selection = e.target.className;
+    let idx = select_vals.indexOf(player_selection);
+    let player = vals[idx];
+    console.log(player_selection);
+    console.log(player);
+    
     gameRound(cpu,player);
-    console.log('Score is Player: ' + String(playerScore) + ', CPU: ' + String(cpuScore))
+    playerScoreDisplay.textContent = String(playerScore);
+    cpuScoreDisplay.textContent = String(cpuScore);
 }
