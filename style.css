@@ -7,11 +7,6 @@ body{
     font-size: larger;
 }
 
-span{
-    color: green;
-    font-weight: bolder;
-}
-
 .text_container{
     margin-left: 20%;
 }
