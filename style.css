@@ -22,3 +22,17 @@ button{
     height: 50px;
     width: 175px;
 }
+
+.boldGreen{
+    font-weight: bold;
+    color: green;
+}
+
+.boldRed{
+    font-weight: bold;
+    color: red;
+}
+
+.results_container{
+    text-align: center;
+}

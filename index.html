@@ -10,8 +10,8 @@
     <div class="text_container">
         <h1>Naught's and Crosses!</h1>
         <h3>Pick Rock, Paper or Scissors! First to 5 wins!</h3>
-        <h4><span style="color: green;">Player Score:</span> <span id="playerScore"></span></h4>
-        <h4><span style="color: red;">CPU Score:</span> <span id="cpuScore"></span></h4>
+        <h4><span class="boldGreen">Player Score:</span> <span id="playerScore"></span></h4>
+        <h4><span class="boldRed">CPU Score:</span> <span id="cpuScore"></span></h4>
     </div>
     <div class="btn_container">
         <button class="rock">
@@ -23,6 +23,11 @@
         <button class="scissors">
             Scissors
         </button>
+    </div>
+    <div class="results_container">
+        <p><span class="boldGreen">Player Picked: </span> <span id="playerSelection"></span></p>
+        <p><span class="boldRed">CPU Picked</span> <span id="cpuSelection"></span></p>
+        <p id="result"></p>
     </div>
 
     <script src="nandc.js"></script>

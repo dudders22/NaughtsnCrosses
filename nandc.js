@@ -4,20 +4,24 @@ const select_vals = ['rock','paper', 'scissors', 'exit'];
 var cpuScore = 0;
 var playerScore = 0;
 
+//Add more Event Listeners
+let playerPick = document.querySelector('#playerSelection');
+let CPUPick = document.querySelector('#cpuSelection');
+let result = document.querySelector('#result')
+
 //Add the Text for the Results
 let playerScoreDisplay = document.querySelector('#playerScore');
 let cpuScoreDisplay = document.querySelector('#cpuScore');
 playerScoreDisplay.textContent = '0';
 cpuScoreDisplay.textContent = '0';
 
-//Add Event Listners
+//Add Button Event Listners
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => addEventListener('click',play));
 
 //CPU picker function
 function CPU_Pick(){
     const r = Math.floor(Math.random() * 3);
-    console.log('test - CPU value' + JSON.stringify(vals[r]));
     return vals[r];
 }
 
@@ -30,23 +34,20 @@ function gameRound(cpu,player){
     if (cpuNum == 1){ playerNum = playerNum % 3};
     if (playerNum == 1){cpuNum = cpuNum % 3};
 
+    playerPick.textContent = playerChoice;
+    CPUPick.textContent = cpuChoice;
+
     //Decide winner
     if(cpuNum == playerNum){
-        console.log('Player selected: ' + playerChoice);
-        console.log('CPU selected: ' + cpuChoice);
-        console.log('--Round Draw--')
+        result.textContent = '--Round Draw--';
     }
     else if(cpuNum > playerNum){
-        console.log('Player selected: ' + playerChoice);
-        console.log('CPU selected: ' + cpuChoice);
-        console.log('--CPU wins the round--')
-        cpuScore += 1
+        result.textContent = '--CPU wins the round--';
+        cpuScore += 1;
     }
     else{
-        console.log('Player selected: ' + playerChoice);
-        console.log('CPU selected: ' + cpuChoice);
-        console.log('--Player wins the round--')
-        playerScore += 1
+        result.textContent = '--Player wins the round--';
+        playerScore += 1;
     }
 }
 
@@ -61,8 +62,6 @@ function play(e){
     let player_selection = e.target.className;
     let idx = select_vals.indexOf(player_selection);
     let player = vals[idx];
-    console.log(player_selection);
-    console.log(player);
     
     gameRound(cpu,player);
     playerScoreDisplay.textContent = String(playerScore);
