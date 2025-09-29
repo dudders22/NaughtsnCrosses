@@ -35,4 +35,11 @@ button{
 
 .results_container{
     text-align: center;
+    opacity: 0;
+    transition: all 2s;
+}
+
+.showResult{
+    opacity: 1;
+    transition: all 0s;
 }

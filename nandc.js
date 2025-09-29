@@ -8,6 +8,7 @@ var playerScore = 0;
 let playerPick = document.querySelector('#playerSelection');
 let CPUPick = document.querySelector('#cpuSelection');
 let result = document.querySelector('#result')
+let resultContainer = document.querySelector('.results_container');
 
 //Add the Text for the Results
 let playerScoreDisplay = document.querySelector('#playerScore');
@@ -49,6 +50,10 @@ function gameRound(cpu,player){
         result.textContent = '--Player wins the round--';
         playerScore += 1;
     }
+
+    //Show Result
+    resultContainer.classList.add('showResult');
+    setTimeout(() => resultContainer.classList.remove('showResult'),1500);
 }
 
 function reset(){
