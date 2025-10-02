@@ -19,12 +19,29 @@ cpuScoreDisplay.textContent = '0';
 
 //Add Button Event Listners
 const buttons = document.querySelectorAll('button');
-buttons.forEach(button => addEventListener('click',play));
+buttons.forEach(button => button.addEventListener('click',play));
 
-//CPU picker function
+function play(e){
+    console.log(e.target)
+    let cpu = CPU_Pick();
+    let player_selection = e.target.className;
+    let idx = select_vals.indexOf(player_selection);
+    let player = vals[idx];
+    
+    gameRound(cpu,player);
+    playerScoreDisplay.textContent = String(playerScore);
+    cpuScoreDisplay.textContent = String(cpuScore);
+}
+
 function CPU_Pick(){
     const r = Math.floor(Math.random() * 3);
     return vals[r];
+}
+
+function reset(){
+    playerScore = 0
+    cpuScore = 0
+    console.log('Scores reset to 0-0')
 }
 
 function gameRound(cpu,player){
@@ -56,21 +73,4 @@ function gameRound(cpu,player){
     clearTimeout(timeVariable);
     resultContainer.classList.add('showResult');
     timeVariable = setTimeout(() => resultContainer.classList.remove('showResult'),1000);
-}
-
-function reset(){
-    playerScore = 0
-    cpuScore = 0
-    console.log('Scores reset to 0-0')
-}
-
-function play(e){
-    let cpu = CPU_Pick();
-    let player_selection = e.target.className;
-    let idx = select_vals.indexOf(player_selection);
-    let player = vals[idx];
-    
-    gameRound(cpu,player);
-    playerScoreDisplay.textContent = String(playerScore);
-    cpuScoreDisplay.textContent = String(cpuScore);
 }
