@@ -43,3 +43,24 @@ button{
     opacity: 1;
     transition: all 0s;
 }
+
+.final_results_container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: none;
+    &.unhide{
+    display: flex;
+    }
+}
+
+#attribution{
+    font-size: smaller;
+    font-style: italic;
+}
+
+#final_result_pic{
+    height: 300px;
+    width: auto;
+}

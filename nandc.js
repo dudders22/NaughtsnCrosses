@@ -9,6 +9,9 @@ let playerPick = document.querySelector('#playerSelection');
 let CPUPick = document.querySelector('#cpuSelection');
 let result = document.querySelector('#result')
 let resultContainer = document.querySelector('.results_container');
+let finalText = document.querySelector('#final_result_text');
+let finalImage = document.querySelector('#final_result_pic');
+let finalAttribution = document.querySelector('#attribution');
 let timeVariable;
 
 //Add the Text for the Results
@@ -67,6 +70,17 @@ function gameRound(cpu,player){
     else{
         result.textContent = '--Player wins the round--';
         playerScore += 1;
+    }
+
+    //Check for final result
+    let finalWin = document.querySelector('#winner_results');
+    let finalLose = document.querySelector('#loser_results');
+
+    if (cpuScore === 5){
+        finalWin.classList.add('unhide');
+    }
+    else if (playerScore === 5){
+        finalLose.classList.add('unhide')
     }
 
     //Show Result
