@@ -9,9 +9,7 @@ let playerPick = document.querySelector('#playerSelection');
 let CPUPick = document.querySelector('#cpuSelection');
 let result = document.querySelector('#result')
 let resultContainer = document.querySelector('.results_container');
-let finalText = document.querySelector('#final_result_text');
-let finalImage = document.querySelector('#final_result_pic');
-let finalAttribution = document.querySelector('#attribution');
+let finalResult = document.querySelector('.final_results_container');
 let timeVariable;
 
 //Add the Text for the Results
@@ -21,13 +19,15 @@ playerScoreDisplay.textContent = '0';
 cpuScoreDisplay.textContent = '0';
 
 //Add Button Event Listners
-const buttons = document.querySelectorAll('button');
+const allButtons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.playBtn');
 buttons.forEach(button => button.addEventListener('click',play));
+const resetBtn = document.querySelector('.resetBtn');
+resetBtn.addEventListener('click',reset);
 
 function play(e){
-    console.log(e.target)
     let cpu = CPU_Pick();
-    let player_selection = e.target.className;
+    let player_selection = e.target.id;
     let idx = select_vals.indexOf(player_selection);
     let player = vals[idx];
     
@@ -44,7 +44,10 @@ function CPU_Pick(){
 function reset(){
     playerScore = 0
     cpuScore = 0
-    console.log('Scores reset to 0-0')
+    playerScoreDisplay.textContent = 0;
+    cpuScoreDisplay.textContent = 0;
+    allButtons.forEach(button => button.classList.toggle('btnHide'));
+    finalResult.classList.remove('unhide');
 }
 
 function gameRound(cpu,player){
@@ -78,9 +81,11 @@ function gameRound(cpu,player){
 
     if (cpuScore === 5){
         finalWin.classList.add('unhide');
+        allButtons.forEach(button => button.classList.toggle('btnHide'))
     }
     else if (playerScore === 5){
-        finalLose.classList.add('unhide')
+        finalLose.classList.add('unhide');
+        allButtons.forEach(button => button.classList.toggle('btnHide'))
     }
 
     //Show Result
